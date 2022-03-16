@@ -1,13 +1,12 @@
-// httpモジュールを読み込み、インスタンスを生成
-var http = require('http');
+var express = require('express');
 
-// HTTPサーバーのイベントハンドラを定義
-http.createServer(function (req, res) {
+// Constants
+var PORT = 8080;
 
-    // HTTPヘッダを出力
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+// App
+var app = express();
+app.get('/', function (req, res) {
+  res.send('Hello world\n');
+});
 
-    // レスポンスの中身を出力
-    res.end('Hello World\n');
-
-}).listen(8080, '127.0.0.1');
+app.listen(PORT);
