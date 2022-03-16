@@ -1,22 +1,17 @@
 module.exports = {
   apps : [{
-    script: 'index.js',
-    watch: '.'
-  }, {
-    script: './service-worker/',
-    watch: ['./service-worker']
+    script: 'main.js',
   }],
-
+   
+  // Deployment Configuration
   deploy : {
     production : {
-      user : 'SSH_USERNAME',
-      host : 'SSH_HOSTMACHINE',
-      ref  : 'origin/master',
-      repo : 'GIT_REPOSITORY',
-      path : 'DESTINATION_PATH',
-      'pre-deploy-local': '',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
-      'pre-setup': ''
+       "user" : "node",
+       "host" : "127.0.0.1",
+       "ref"  : "origin/master",
+       "repo" : "git@github.com:nyossa/test_pm2_deploy.git",
+       "path" : "/Users/yoshizawanaoaki/python_test/workspace/aibod/dev/test_pm2_deploy",
+       "post-deploy" : "pm2 start main.js"
     }
   }
 };
